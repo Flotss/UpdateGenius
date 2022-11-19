@@ -16,3 +16,19 @@ Ensuite, vous choisissez si vous voulez faire la mise à jour de tous vos progra
 Vous pouvez ensuite faire une revérification 
 
 ![](https://i.imgur.com/HQraNAj.png)
+
+# Compatibilité
+Voici un tableau de compatibilité des versions de windows avec WINGET
+
+| Windows Version | WINGET |
+| --- | --- |
+| Windows Xp | Non |
+| Windows Vista | Non |
+| Windows 7 | Non |
+| Windows 8 | Non |
+| Windows 8.1 | Non |
+| Windows 10 Version 1709 ou ultérieur | Oui |
+| Windows 11 | Oui |
+
+# Installation
+Pour installer WINGET, vous pouvez suivre ce tutoriel : https://docs.microsoft.com/fr-fr/windows/package-manager/winget/#install-winget
