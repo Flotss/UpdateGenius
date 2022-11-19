@@ -7,6 +7,7 @@ Lancer le fichier `UpdateAllPrograms.bat`
 L'affichage de vos programmes où une mise à jour est disponible sera affiché
 
 Par exemple :
+
 ![](https://i.imgur.com/tOnsOtp.png)
 
 Ensuite, vous choisissez si vous voulez faire la mise à jour de tous vos programmes
