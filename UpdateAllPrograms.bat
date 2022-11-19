@@ -10,18 +10,18 @@ WINGET UPGRADE
 
 
 :while
-ECHO Voulez vous mettre a jour tout vos programmes?
+ECHO Voulez-vous mettre a jour tous vos programmes ?
 set /p YNUpdate=(Yes/No): 
 
 
 IF !YNUpdate! == Yes (
-	WINGET UPGRADE --ALL
 	ECHO "Je me mets a jour"
+	WINGET UPGRADE --ALL
 ) else (
 	IF !YNUpdate! == No (
 		ECHO "Aucune mise a jour a ete faite"
 	) else (
-		echo "Saisie incorrecter veuiller resaisir votre reponse"
+		echo "Saisie incorrecte veuillez ressaisir votre reponse"
 		goto :while
 	)
 )
@@ -34,11 +34,11 @@ IF !YNUpdate! == No (
 )
 
 :verif
-ECHO Voulez vous faire une verification ?
+ECHO Voulez-vous faire une verification ?
 set /p YNVERIF=(Yes/No): 
 
 IF !YNVERIF! == Yes (
-	ECHO "Verification en cours"
+	ECHO Verification en cours
 	goto :debut
 ) else (
 	IF !YNVERIF! == No (
@@ -46,7 +46,7 @@ IF !YNVERIF! == Yes (
 		timeout 5
 		exit /b
 	) else (
-		echo "Saisie incorrecter veuiller resaisir votre reponse"
+		echo "Saisie incorrecte veuillez ressaisir votre reponse"
 		goto :verif
 	)
 )
