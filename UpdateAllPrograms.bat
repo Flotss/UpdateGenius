@@ -1,6 +1,6 @@
 @echo off
 
-@title Update your programmes
+@title Update your programs
 SetLocal EnableDelayedExpansion
 Setlocal EnableExtensions 
 
