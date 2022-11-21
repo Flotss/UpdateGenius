@@ -1,7 +1,9 @@
 # UpdateAllYourPrograms
+
 UpdateAllYourProgram est un programme utilisable sur Windows qui permet de mettre à jour vos logiciels avec WINGET
 
 # Utilisation
+
 Lancer le fichier `UpdateAllPrograms.bat`
 
 L'affichage de vos programmes à installer sera afficher
@@ -13,11 +15,12 @@ Ensuite, vous choisissez si vous voulez faire la mise à jour de tous vos progra
 
 ![](https://i.imgur.com/j89EUCX.png)
 
-Vous pouvez ensuite faire une revérification 
+Vous pouvez ensuite faire une revérification
 
 ![](https://i.imgur.com/HQraNAj.png)
 
 # Compatibilité
+
 Voici un tableau de compatibilité des versions de windows avec WINGET
 
 | Windows Version | WINGET |
@@ -31,4 +34,6 @@ Voici un tableau de compatibilité des versions de windows avec WINGET
 | Windows 11 | Oui |
 
 # Installation
-Pour installer WINGET, vous pouvez suivre ce tutoriel : https://docs.microsoft.com/fr-fr/windows/package-manager/winget/#install-winget
+
+Pour installer WINGET, vous pouvez suivre ce
+tutoriel : https://docs.microsoft.com/fr-fr/windows/package-manager/winget/#install-winget
