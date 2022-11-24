@@ -8,14 +8,18 @@ import com.flotss.updateallyourprograms.utils.SmartReturn;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Model {
     public static String PATHScript = "src\\main\\java\\com\\flotss\\updateallyourprograms\\script\\";
 
-    private ArrayList<MiseAjour> miseAjours;
-    private ArrayList<MiseAjour> miseAjoursSelectionnes;
+    private Set<MiseAjour> miseAjours;
+    private Set<MiseAjour> miseAjoursSelectionnes;
+    private MiseAjour miseAjourCouranteDisponible;
+    private MiseAjour miseAjourCouranteSelectionnee;
     private final Logs logs;
 
     private final ArrayList<Observateur> observateurs;
@@ -26,18 +30,20 @@ public class Model {
         this.observateurs = new ArrayList<>();
         rechercheMiseAjour();
         this.notifierObservateurs();
+        this.miseAjourCouranteDisponible = null;
+        this.miseAjourCouranteSelectionnee = null;
         for (MiseAjour miseAjour : miseAjours) {
             System.out.println(miseAjour);
         }
     }
 
     public void rechercheMiseAjour() {
-        this.miseAjours = new ArrayList<>();
-        this.miseAjoursSelectionnes = new ArrayList<>();
+        this.miseAjours = new TreeSet<>();
+        this.miseAjoursSelectionnes = new TreeSet<>();
 
         this.logs.addLog("Recherche des mises à jour en cours...");
         try {
-            // Execute script affichageFileTemp.bat qui se situe dans le dossier script de ce projet
+//          Execute script affichageFileTemp.bat qui se situe dans le dossier script de ce projet TODO : REMETRE LA GENERATION DU FICHIER
             ProcessBuilder builder = new ProcessBuilder(PATHScript + "affichageFileTemp.bat", "/quiet");
             builder.redirectErrorStream(true);
             Process p = builder.start();
@@ -56,14 +62,18 @@ public class Model {
     private void creationMiseAjour() throws IOException {
         String tmpdir = System.getProperty("java.io.tmpdir");
         BufferedReader br = new BufferedReader(new java.io.FileReader(tmpdir + "winget.tmp"));
-        br.readLine();
-        br.readLine();
-        br.readLine();
-        br.readLine();
 
         String line;
-        // Regex for match with integer in the beginning of the line : ^[0-9]+
+
+        // On passe toutes les lignes qui ne nous intéressent pas
+        do {
+            line = br.readLine();
+        } while (!line.contains("----"));
+
+
         while ((line = br.readLine()) != null) {
+            // Si c'est la dernière ligne, on sort de la boucle
+            // Soit quand que le premier caractère est un chiffre
             try {
                 Integer.parseInt(line.charAt(0) + "");
                 throw new Error("Integer found");
@@ -98,6 +108,7 @@ public class Model {
             String disponible = res.getValue();
 
             this.miseAjours.add(new MiseAjour(nom, id, version, disponible, this, this.logs));
+            this.logs.addLog("Mise à jour disponible pour " + nom);
             this.notifierObservateurs();
         }
     }
@@ -158,8 +169,55 @@ public class Model {
         return index;
     }
 
+    public void selectionnerMiseAjour(MiseAjour miseAjour) {
+        if (this.miseAjoursSelectionnes.contains(miseAjour)) return;
+
+        this.miseAjoursSelectionnes.add(miseAjour);
+        this.notifierObservateurs();
+    }
+
+    public void deselectionnerMiseAjour(MiseAjour miseAjour) {
+        if (!this.miseAjoursSelectionnes.contains(miseAjour)) return;
+
+        this.miseAjoursSelectionnes.remove(miseAjour);
+        this.notifierObservateurs();
+    }
+
+    public void setMiseAjourCouranteDisponible(MiseAjour miseAjour) {
+        this.miseAjourCouranteDisponible = miseAjour;
+        this.notifierObservateurs();
+    }
+
+    public void setMiseAjourCouranteSelectionnee(MiseAjour miseAjour) {
+        this.miseAjourCouranteSelectionnee = miseAjour;
+        this.notifierObservateurs();
+    }
+
+    public void ajouterToutesLesMiseAjours() {
+        this.miseAjoursSelectionnes.addAll(miseAjours);
+        this.notifierObservateurs();
+    }
+
+    public void retirerToutesLesMiseAjours() {
+        this.miseAjoursSelectionnes.clear();
+        this.notifierObservateurs();
+    }
+
+    public void executerLesMiseAjours() {
+        this.miseAjoursSelectionnes.forEach(miseAjour -> {
+            try {
+                miseAjour.makeUpdate();
+                this.miseAjoursSelectionnes.remove(miseAjour);
+                this.notifierObservateurs();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
 
     // PARTIE OBSERVATEUR
+
     public void ajouterObservateur(Observateur o) {
         observateurs.add(o);
     }
@@ -169,19 +227,32 @@ public class Model {
     }
 
     public void notifierObservateurs() {
-        System.out.println("Notif");
         for (Observateur observateur : observateurs) {
             observateur.update(this);
         }
     }
 
-
     // PARTIE GETTER
-    public ArrayList<MiseAjour> getMiseAjours() {
+
+    public Set<MiseAjour> getMiseAjours() {
         return miseAjours;
     }
 
-    public ArrayList<MiseAjour> miseAjoursSelectionnes() {
+    public Set<MiseAjour> getMiseAjoursSelectionnes() {
         return miseAjoursSelectionnes;
     }
+
+    public Logs getLogs() {
+        return this.logs;
+    }
+
+    public MiseAjour getMiseAjourCouranteDisponible() {
+        return miseAjourCouranteDisponible;
+    }
+
+    public MiseAjour getMiseAjourCouranteSelectionnee() {
+        return miseAjourCouranteSelectionnee;
+    }
+
+
 }

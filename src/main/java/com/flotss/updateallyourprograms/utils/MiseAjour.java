@@ -4,7 +4,7 @@ import com.flotss.updateallyourprograms.Model.Model;
 
 import java.io.IOException;
 
-public class MiseAjour {
+public class MiseAjour implements Comparable<MiseAjour> {
     private final String nom;
     private final String ID;
     private final String versionActuelle;
@@ -31,30 +31,35 @@ public class MiseAjour {
         // Verification du code de retour du processus
         if (exec.exitValue() == 0) {
             this.logs.addLog("Mise à jour de " + this.nom + " terminée");
-        } else {
+        } else if (exec.exitValue() == 1) {
             this.logs.addLog("Erreur lors de la mise à jour de " + this.nom);
         }
 
         this.model.notifierObservateurs();
     }
 
-    public String nom() {
+    public String getNom() {
         return nom;
     }
 
-    public String ID() {
+    public String getID() {
         return ID;
     }
 
-    public String versionActuelle() {
+    public String getVersionActuelle() {
         return versionActuelle;
     }
 
-    public String versionDisponible() {
+    public String getVersionDisponible() {
         return versionDisponible;
     }
 
     public String toString() {
         return "Nom : " + nom + ", ID : " + ID + ", Version : " + versionActuelle + ", Disponible : " + versionDisponible;
+    }
+
+    @Override
+    public int compareTo(MiseAjour o) {
+        return this.nom.compareTo(o.nom);
     }
 }
