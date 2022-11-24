@@ -2,22 +2,24 @@ package com.flotss.updateallyourprograms.utils;
 
 import com.flotss.updateallyourprograms.Model.Model;
 
+import java.util.ArrayList;
+
 public class Logs {
-    private String log;
+    private final ArrayList<String> logs;
 
     private final Model model;
 
     public Logs(Model model) {
-        log = "";
+        this.logs = new ArrayList<>();
         this.model = model;
     }
 
     public void addLog(String log) {
-        this.log += this.log + "\n" + log;
+        this.logs.add(log);
         model.notifierObservateurs();
     }
 
-    public String getLog() {
-        return log;
+    public ArrayList<String> getAllLogsString() {
+        return this.logs;
     }
 }
