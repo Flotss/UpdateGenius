@@ -3,6 +3,8 @@ package com.flotss.updateallyourprograms.utils;
 import com.flotss.updateallyourprograms.Model.Model;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MiseAjour implements Comparable<MiseAjour> {
     private final String nom;
@@ -14,7 +16,7 @@ public class MiseAjour implements Comparable<MiseAjour> {
     private final Model model;
 
     public MiseAjour(String nom, String ID, String versionActuelle, String versionDisponible, Model model, Logs logs) {
-        this.nom = nom;
+        this.nom = nameWithoutVersion(nom);
         this.ID = ID;
         this.versionActuelle = versionActuelle;
         this.versionDisponible = versionDisponible;
@@ -61,5 +63,15 @@ public class MiseAjour implements Comparable<MiseAjour> {
     @Override
     public int compareTo(MiseAjour o) {
         return this.nom.compareTo(o.nom);
+    }
+
+
+    private String nameWithoutVersion(String name) {
+        Pattern pattern = Pattern.compile("(.*)\\s\\d+\\.\\d+\\.\\d+");
+        Matcher matcher = pattern.matcher(name);
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+        return name;
     }
 }
