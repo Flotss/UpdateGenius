@@ -180,6 +180,7 @@ public class Model {
         if (!this.miseAjoursSelectionnes.contains(miseAjour)) return;
 
         this.miseAjoursSelectionnes.remove(miseAjour);
+        this.miseAjourCouranteSelectionnee = null;
         this.notifierObservateurs();
     }
 
