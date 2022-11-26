@@ -16,7 +16,6 @@ import java.util.Set;
 
 public class MiseAjourDisponible extends ScrollPane implements Observateur {
 
-
     public MiseAjourDisponible(Model model) {
         super();
         this.setFitToWidth(true);
@@ -25,7 +24,7 @@ public class MiseAjourDisponible extends ScrollPane implements Observateur {
         this.setMinHeight(350);
         this.setMaxWidth(400);
         this.setMaxHeight(400);
-        this.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
+        this.hbarPolicyProperty().setValue(ScrollBarPolicy.NEVER);
         // Set padding in right and left and bottom
         this.setPadding(new Insets(0, 10, 10, 10));
 
@@ -34,8 +33,15 @@ public class MiseAjourDisponible extends ScrollPane implements Observateur {
 
     @Override
     public void update(Model model) {
+        // The scroll bar is always at the top
+        this.setVvalue(0);
+
         Set<MiseAjour> miseAjours = model.getMiseAjours();
         VBox vBox = new VBox();
+        this.setMaxWidth(400);
+        this.setMaxHeight(400);
+        this.setWidth(350);
+        this.setHeight(350);
         this.setContent(vBox);
         for (MiseAjour miseAjour : miseAjours) {
             HBox hBox = new HBox();

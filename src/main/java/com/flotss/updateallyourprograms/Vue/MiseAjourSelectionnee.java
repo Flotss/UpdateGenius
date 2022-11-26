@@ -20,11 +20,11 @@ public class MiseAjourSelectionnee extends ScrollPane implements Observateur {
         super();
         this.setFitToWidth(true);
         this.setFitToHeight(true);
-        this.hbarPolicyProperty().setValue(ScrollBarPolicy.NEVER);
         this.setMinWidth(350);
         this.setMinHeight(350);
         this.setMaxWidth(400);
         this.setMaxHeight(400);
+        this.hbarPolicyProperty().setValue(ScrollBarPolicy.NEVER);
         // Set padding in right and left and bottom
         this.setPadding(new Insets(0, 10, 10, 10));
 
@@ -38,10 +38,10 @@ public class MiseAjourSelectionnee extends ScrollPane implements Observateur {
 
         Set<MiseAjour> miseAjours = model.getMiseAjoursSelectionnes();
         VBox vBox = new VBox();
-        vBox.setMaxHeight(400);
-        vBox.setMinHeight(400);
-        vBox.setMinWidth(400);
-        vBox.setMaxWidth(400);
+        this.setMaxWidth(400);
+        this.setMaxHeight(400);
+        this.setWidth(350);
+        this.setHeight(350);
         this.setContent(vBox);
         for (MiseAjour miseAjour : miseAjours) {
             HBox hBox = new HBox();
