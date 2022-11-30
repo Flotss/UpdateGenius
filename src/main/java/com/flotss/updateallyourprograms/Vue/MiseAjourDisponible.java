@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.util.Set;
@@ -53,7 +52,7 @@ public class MiseAjourDisponible extends ScrollPane implements Observateur {
             vBox.getChildren().add(hBox);
 
             if (miseAjour == model.getMiseAjourCouranteDisponible()) {
-                hBox.setBackground(new Background(new BackgroundFill(Color.web("#00daff"), CornerRadii.EMPTY, Insets.EMPTY)));
+                hBox.setStyle("-fx-background-color: "+Model.COLOR_SELECTED);
             }
 
         }

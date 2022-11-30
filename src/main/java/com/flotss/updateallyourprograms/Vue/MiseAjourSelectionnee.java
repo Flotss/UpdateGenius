@@ -51,7 +51,7 @@ public class MiseAjourSelectionnee extends ScrollPane implements Observateur {
             vBox.getChildren().add(hBox);
 
             if (miseAjour == model.getMiseAjourCouranteSelectionnee()) {
-                hBox.setStyle("-fx-background-color: #00daff");
+                hBox.setStyle("-fx-background-color: "+Model.COLOR_SELECTED);
             }
         }
     }
