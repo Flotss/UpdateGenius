@@ -4,6 +4,7 @@ import com.flotss.updateallyourprograms.Vue.Observateur;
 import com.flotss.updateallyourprograms.utils.Logs;
 import com.flotss.updateallyourprograms.utils.MiseAjour;
 import com.flotss.updateallyourprograms.utils.SmartReturn;
+import javafx.application.Platform;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.regex.Pattern;
 
 public class Model {
     public static String PATHScript = "src\\main\\java\\com\\flotss\\updateallyourprograms\\script\\";
+    public static String COLOR_SELECTED = "#00daff";
 
     private Set<MiseAjour> miseAjours;
     private Set<MiseAjour> miseAjoursSelectionnes;
@@ -107,9 +109,8 @@ public class Model {
             res = recupererString(line, i);
             String disponible = res.getValue();
 
-            this.miseAjours.add(new MiseAjour(nom, id, version, disponible, this, this.logs));
+            this.miseAjours.add(new MiseAjour(nom, id, version, disponible, this.logs));
             this.logs.addLog("Mise à jour disponible pour " + nom);
-            this.notifierObservateurs();
         }
     }
 
@@ -204,16 +205,55 @@ public class Model {
         this.notifierObservateurs();
     }
 
-    public void executerLesMiseAjours() {
+    public void executerLesMiseAjours() throws IOException {
         this.miseAjoursSelectionnes.forEach(miseAjour -> {
-            try {
+//            Runnable update = () -> {
+//                Platform.runLater(() -> {
+//                    try {
+//                        miseAjour.makeUpdate();
+//                    } catch (IOException | InterruptedException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                    this.notifierObservateurs();
+//                });
+//            };
+//            Thread thread = new Thread(update);
+//            thread.setDaemon(true);
+//            thread.start();
+
+
+
+//            try {
+//                miseAjour.makeUpdate();
+//            } catch (IOException | InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+
+
+//            this.notifierObservateurs();
+
+//            final Service<Void> update = new Service<Void>() {
+//                @Override
+//                protected Task<Void> createTask() {
+//                    return new Task<Void>() {
+//
+//                        @Override
+//                        protected Void call() throws Exception {
+//                            miseAjour.makeUpdate();
+//                            return null;
+//                        }
+//                    };
+//                }
+//            };
+//            update.start();
+
+            Platform.runLater(() -> {
                 miseAjour.makeUpdate();
-                this.miseAjoursSelectionnes.remove(miseAjour);
-                this.notifierObservateurs();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            });
         });
+        this.miseAjoursSelectionnes.clear();
+        this.creationMiseAjour();
+        this.notifierObservateurs();
     }
 
 
