@@ -1,24 +1,25 @@
 # UpdateGenius
+
 UpdateGenius est un programme utilisable sur Windows qui permet de mettre à jour vos logiciels avec WINGET
 
 # Utilisation
-Lancer le fichier `UpdateGenius.bat`
 
-L'affichage de vos programmes où une mise à jour est disponible sera affiché
+Compiler le projet avec un IDE tel que IntelliJ
 
-Par exemple :
+Et executer ce fichier src/main/java/com/flotss/updateallyourprograms/UpdateGenius.java
 
-![](https://i.imgur.com/tOnsOtp.png)
+Vous aurez un affichage comme ceci : 
 
-Ensuite, vous choisissez si vous voulez faire la mise à jour de tous vos programmes
 
-![](https://i.imgur.com/j89EUCX.png)
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/80858668/234262305-fd1746f4-c93f-49b5-a7fd-4ebfdcfd7297.png">
 
-Vous pouvez ensuite faire une revérification 
 
-![](https://i.imgur.com/HQraNAj.png)
+La partie gauche sont les mises à jours disponible sur votre ordinateur
+
+La partie droit les mises à jours que vous avez séléctionner
 
 # Compatibilité
+
 Voici un tableau de compatibilité des versions de windows avec WINGET
 
 | Windows Version | WINGET |
@@ -32,4 +33,6 @@ Voici un tableau de compatibilité des versions de windows avec WINGET
 | Windows 11 | Oui |
 
 # Installation
-Si vous n'avez pas WINGET installé, vous pouvez suivre ce tutoriel : https://docs.microsoft.com/fr-fr/windows/package-manager/winget/#install-winget
+
+Pour installer WINGET, vous pouvez suivre ce tutoriel : https://docs.microsoft.com/fr-fr/windows/package-manager/winget/#install-winget
+
