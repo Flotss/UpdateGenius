@@ -1,8 +1,8 @@
-# UpdateAllYourPrograms
-UpdateAllYourProgram est un programme utilisable sur Windows qui permet de mettre à jour vos logiciels avec WINGET
+# UpdateGenius
+UpdateGenius est un programme utilisable sur Windows qui permet de mettre à jour vos logiciels avec WINGET
 
 # Utilisation
-Lancer le fichier `UpdateAllPrograms.bat`
+Lancer le fichier `UpdateGenius.bat`
 
 L'affichage de vos programmes où une mise à jour est disponible sera affiché
 
