@@ -1,4 +1,4 @@
-# UpdateAllYourPrograms
+# UpdateGenius
 UpdateAllYourProgram est un programme utilisable sur Windows qui permet de mettre à jour vos logiciels avec WINGET
 
 # Utilisation
