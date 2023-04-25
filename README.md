@@ -1,23 +1,21 @@
-# UpdateAllYourPrograms
+# UpdateGenius
 
-UpdateAllYourProgram est un programme utilisable sur Windows qui permet de mettre à jour vos logiciels avec WINGET
+UpdateGenius est un programme utilisable sur Windows qui permet de mettre à jour vos logiciels avec WINGET
 
 # Utilisation
 
-Lancer le fichier `UpdateAllPrograms.bat`
+Compiler le projet avec un IDE tel que IntelliJ
 
-L'affichage de vos programmes à installer sera afficher
+Et executer ce fichier src/main/java/com/flotss/updateallyourprograms/UpdateGenius.java
 
-Par exemple :
-![](https://i.imgur.com/tOnsOtp.png)
+Vous aurez un affichage comme ceci : 
 
-Ensuite, vous choisissez si vous voulez faire la mise à jour de tous vos programmes
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/80858668/234262305-fd1746f4-c93f-49b5-a7fd-4ebfdcfd7297.png">
 
-![](https://i.imgur.com/j89EUCX.png)
 
-Vous pouvez ensuite faire une revérification
+La partie gauche sont les mises à jours disponible sur votre ordinateur
 
-![](https://i.imgur.com/HQraNAj.png)
+La partie droit les mises à jours que vous avez séléctionner
 
 # Compatibilité
 
