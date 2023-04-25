@@ -1,12 +1,12 @@
-# UpdateAllYourPrograms
+# UpdateGenius
 
-UpdateAllYourProgram est un programme utilisable sur Windows qui permet de mettre à jour vos logiciels avec WINGET
+UpdateGenius est un programme utilisable sur Windows qui permet de mettre à jour vos logiciels avec WINGET
 
 # Utilisation
 
 Compiler le projet avec un IDE tel que IntelliJ
 
-Et executer ce fichier src/main/java/com/flotss/updateallyourprograms/UpdateAllYourPrograms.java
+Et executer ce fichier src/main/java/com/flotss/updateallyourprograms/UpdateGenius.java
 
 Vous aurez un affichage comme ceci : 
 
