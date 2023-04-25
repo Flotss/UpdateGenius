@@ -10,6 +10,7 @@ Et executer ce fichier src/main/java/com/flotss/updateallyourprograms/UpdateGeni
 
 Vous aurez un affichage comme ceci : 
 
+
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/80858668/234262305-fd1746f4-c93f-49b5-a7fd-4ebfdcfd7297.png">
 
 
@@ -33,5 +34,5 @@ Voici un tableau de compatibilité des versions de windows avec WINGET
 
 # Installation
 
-Pour installer WINGET, vous pouvez suivre ce
-tutoriel : https://docs.microsoft.com/fr-fr/windows/package-manager/winget/#install-winget
+Pour installer WINGET, vous pouvez suivre ce tutoriel : https://docs.microsoft.com/fr-fr/windows/package-manager/winget/#install-winget
+
